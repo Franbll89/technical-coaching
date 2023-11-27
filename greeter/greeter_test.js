@@ -20,9 +20,12 @@ describe('Greeter', () => {
     });
 
     test('greets Pluto by name', () => {
-        greetAndExpect("Pluto", "Hello Pluto")
+        greetAndExpect("Pluto", "Hello Pluto");
     });
 
+    test('trims the input when greetning', () => {
+        greetAndExpect(" Paperino ", "Hello Paperino");
+    })
 
     function greetAndExpect(name, expectedGreeting) {
         const greeting = greeter.greet(name);
