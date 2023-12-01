@@ -23,8 +23,24 @@ describe('Greeter', () => {
         greetAndExpect("Pluto", "Hello Pluto");
     });
 
-    test('trims the input when greetning', () => {
+    test('trims the input when greeting', () => {
         greetAndExpect(" Paperino ", "Hello Paperino");
+    })
+
+    test('capitalise name when greeting', () => {
+        greetAndExpect(" marisa", "Hello Marisa");
+    })
+
+    test('can capitalise string with no leading spaces', () => {
+        const capitalised = greeter.capitalise("marisa");
+
+        expect(capitalised).toEqual("Marisa")
+    })
+
+    test('can capitalise string of length 1', () => {
+        const capitalised = greeter.capitalise("f");
+
+        expect(capitalised).toEqual("F")
     })
 
     function greetAndExpect(name, expectedGreeting) {
