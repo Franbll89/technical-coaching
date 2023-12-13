@@ -2,8 +2,18 @@
 
 class Greeter {
 
+    constructor(dateTime= new Date()) {
+        this.dateTime = dateTime;
+    }
+
     greet(name) {
-        return `Hello ${this.formatName(name)}`;
+        const formattedName = this.formatName(name);
+
+        if (this.dateTime.getHours() >= 6 && this.dateTime.getHours() < 12) {
+            return `Good morning ${formattedName}`;
+        } else {
+            return `Hello ${formattedName}`;
+        }
     }
 
     formatName(name) {

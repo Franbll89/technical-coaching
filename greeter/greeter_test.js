@@ -13,7 +13,7 @@ const Greeter = require('./greeter.js')
 */
 
 describe('Greeter', () => {
-    const greeter = new Greeter();
+    const greeter = new Greeter(new Date("2015-03-25 15:00:00"));
 
     test('greets Pippo by name', () => {
         greetAndExpect("Pippo", "Hello Pippo");
@@ -41,6 +41,31 @@ describe('Greeter', () => {
         const capitalised = greeter.capitalise("f");
 
         expect(capitalised).toEqual("F")
+    })
+
+    test('uses "good morning" at 9', () => {
+        const greeter = new Greeter(new Date("2015-03-25 09:00:00"));
+
+        const greeting = greeter.greet("Fausto");
+
+        expect(greeting).toEqual("Good morning Fausto");
+    })
+
+
+    test('uses "good morning" at 11:30', () => {
+        const greeter = new Greeter(new Date("2015-03-25 11:30:00"));
+
+        const greeting = greeter.greet("Fausto");
+
+        expect(greeting).toEqual("Good morning Fausto");
+    })
+
+    test('uses "hello" at 12:45', () => {
+        const greeter = new Greeter(new Date("2015-03-25 12:45:00"));
+
+        const greeting = greeter.greet("Pallavi");
+
+        expect(greeting).toEqual("Hello Pallavi");
     })
 
     function greetAndExpect(name, expectedGreeting) {
