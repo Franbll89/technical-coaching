@@ -2,17 +2,24 @@
 
 class Greeter {
 
-    constructor(dateTime= new Date()) {
+    constructor(dateTime = new Date()) {
         this.dateTime = dateTime;
     }
 
     greet(name) {
-        const formattedName = this.formatName(name);
+        return `${this.calculateGreetingBasedOnTime()} ${this.formatName(name)}`;
+    }
 
-        if (this.dateTime.getHours() >= 6 && this.dateTime.getHours() < 12) {
-            return `Good morning ${formattedName}`;
+    calculateGreetingBasedOnTime() {
+        const hours = this.dateTime.getHours();
+        if (hours >= 6 && hours < 12) {
+            return `Good morning`;
+        } else if (hours >= 18 && hours < 22) {
+            return `Good evening`;
+        } else if (hours >= 22 || hours < 6) {
+            return `Good night`
         } else {
-            return `Hello ${formattedName}`;
+            return `Hello`
         }
     }
 

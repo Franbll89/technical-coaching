@@ -68,6 +68,30 @@ describe('Greeter', () => {
         expect(greeting).toEqual("Hello Pallavi");
     })
 
+    test('uses "good evening" at dinner time', () => {
+        const greeter = new Greeter(new Date("2015-03-25 19:15:00"));
+
+        const greeting = greeter.greet("Wamika");
+
+        expect(greeting).toEqual("Good evening Wamika");
+    })
+
+    test('uses "good night" at 23:30', () => {
+        const greeter = new Greeter(new Date("2015-03-25 23:30:00"));
+
+        const greeting = greeter.greet("Matteo");
+
+        expect(greeting).toEqual("Good night Matteo");
+    })
+
+    test('uses "good night" at 04:30', () => {
+        const greeter = new Greeter(new Date("2015-03-25 04:30:00"));
+
+        const greeting = greeter.greet("Francesco");
+
+        expect(greeting).toEqual("Good night Francesco");
+    })
+
     function greetAndExpect(name, expectedGreeting) {
         const greeting = greeter.greet(name);
 
