@@ -12,8 +12,12 @@ const Greeter = require('./greeter.js')
 7. `greet` logs on console every time it is run
 */
 
+function getGreeter(dateString) {
+    return new Greeter(() => new Date(dateString));
+}
+
 describe('Greeter', () => {
-    const greeter = new Greeter(new Date("2015-03-25 15:00:00"));
+    const greeter = getGreeter("2015-03-25 15:00:00");
 
     test('greets Pippo by name', () => {
         greetAndExpect("Pippo", "Hello Pippo");
@@ -44,7 +48,7 @@ describe('Greeter', () => {
     })
 
     test('uses "good morning" at 9', () => {
-        const greeter = new Greeter(new Date("2015-03-25 09:00:00"));
+        const greeter = getGreeter("2015-03-25 09:00:00");
 
         const greeting = greeter.greet("Fausto");
 
@@ -53,7 +57,7 @@ describe('Greeter', () => {
 
 
     test('uses "good morning" at 11:30', () => {
-        const greeter = new Greeter(new Date("2015-03-25 11:30:00"));
+        const greeter = getGreeter("2015-03-25 11:30:00");
 
         const greeting = greeter.greet("Fausto");
 
@@ -61,7 +65,7 @@ describe('Greeter', () => {
     })
 
     test('uses "hello" at 12:45', () => {
-        const greeter = new Greeter(new Date("2015-03-25 12:45:00"));
+        const greeter = getGreeter("2015-03-25 12:45:00");
 
         const greeting = greeter.greet("Pallavi");
 
@@ -69,7 +73,7 @@ describe('Greeter', () => {
     })
 
     test('uses "good evening" at dinner time', () => {
-        const greeter = new Greeter(new Date("2015-03-25 19:15:00"));
+        const greeter = getGreeter("2015-03-25 19:15:00");
 
         const greeting = greeter.greet("Wamika");
 
@@ -77,7 +81,7 @@ describe('Greeter', () => {
     })
 
     test('uses "good night" at 23:30', () => {
-        const greeter = new Greeter(new Date("2015-03-25 23:30:00"));
+        const greeter = getGreeter("2015-03-25 23:30:00");
 
         const greeting = greeter.greet("Matteo");
 
@@ -85,7 +89,7 @@ describe('Greeter', () => {
     })
 
     test('uses "good night" at 04:30', () => {
-        const greeter = new Greeter(new Date("2015-03-25 04:30:00"));
+        const greeter = getGreeter("2015-03-25 04:30:00");
 
         const greeting = greeter.greet("Francesco");
 
